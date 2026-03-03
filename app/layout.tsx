@@ -18,7 +18,7 @@ const  SchibstedGrotesk =  Schibsted_Grotesk({
   subsets: ["latin"],
 });
 
-const geistMono = Martian_Mono({
+const MartianMono = Martian_Mono({
   variable: "--font-martian-mono",
   subsets: ["latin"],
 });
@@ -35,8 +35,8 @@ export default function RootLayout({
 }>) {
   return (
      <ClerkProvider>
-    <html lang="en">
-      <body className={`${SchibstedGrotesk.variable} ${geistMono.variable} antialiased`} >
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${SchibstedGrotesk.variable} ${MartianMono.variable} antialiased`} >
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
