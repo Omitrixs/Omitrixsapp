@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
 import NavBar from "@/components/NavBar";
+import { Toaster } from "react-hot-toast"
 import "./globals.css";
 import {
   ClerkProvider,
@@ -64,6 +65,7 @@ export default function RootLayout({
                 </main>
 
             </div>
+            <Toaster/>
           </ThemeProvider>
       </body>
     </html>
