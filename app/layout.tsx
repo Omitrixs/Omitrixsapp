@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Martian_Mono, Schibsted_Grotesk } from "next/font/google";
+import { Martian_Mono } from "next/font/google";
+import { Schibsted_Grotesk } from "next/font/google";
 import { ThemeProvider } from "@/components/themeProvider";
 import NavBar from "@/components/NavBar";
 import { Toaster } from "react-hot-toast"
@@ -15,14 +16,16 @@ import {
 import SideBar from "@/components/SideBar";
 
 
-const  SchibstedGrotesk =  Schibsted_Grotesk({
-  variable: "--font-schibsted-grotesk-sans",
+const martianMono = Martian_Mono({
   subsets: ["latin"],
+  preload: false,
+  variable: "--font-martian-mono",  // ← add this
 });
 
-const MartianMono = Martian_Mono({
-  variable: "--font-martian-mono",
+const schibstedGrotesk = Schibsted_Grotesk({
   subsets: ["latin"],
+  preload: false,
+  variable: "--font-schibsted-grotesk",  // ← add this
 });
 
 export const metadata: Metadata = {
@@ -38,7 +41,7 @@ export default function RootLayout({
   return (
      <ClerkProvider>
     <html lang="en" suppressHydrationWarning>
-      <body className={`${SchibstedGrotesk.variable} ${MartianMono.variable} antialiased`} >
+      <body className={`${schibstedGrotesk.variable} ${martianMono.variable} antialiased`} >
       <ThemeProvider
             attribute="class"
             defaultTheme="system"
