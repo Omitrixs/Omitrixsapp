@@ -2,6 +2,7 @@
 
 import { UploadDropzone } from "@/lib/uploadthing";
 import { XIcon } from "lucide-react";
+import toast from "react-hot-toast";
 
 interface ImageUploadProps {
   onChange: (url: string) => void;
@@ -24,16 +25,29 @@ function ImageUpload({ endpoint, onChange, value }: ImageUploadProps) {
       </div>
     );
   }
+
   return (
     <UploadDropzone
       endpoint={endpoint}
       onClientUploadComplete={(res) => {
-        onChange(res?.[0].url);
+        if (res?.[0].ufsUrl) {
+          onChange(res[0].ufsUrl);
+          toast.success("Image uploaded successfully");
+        }
       }}
       onUploadError={(error: Error) => {
-        console.log(error);
+        console.error("Upload error:", error);
+        toast.error("Image upload failed. Please try again");
+      }}
+      appearance={{
+        button: "ut-ready:bg-primary ut-uploading:bg-primary/50 text-white text-sm font-medium px-4 py-2 rounded-md",
+        container: "border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 cursor-pointer hover:border-primary/50 transition-colors",
+        label: "text-foreground font-medium",
+        allowedContent: "text-muted-foreground text-xs",
+        uploadIcon: "text-muted-foreground",
       }}
     />
   );
 }
+
 export default ImageUpload;
