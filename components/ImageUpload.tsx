@@ -40,7 +40,7 @@ function ImageUpload({ endpoint, onChange, value }: ImageUploadProps) {
         toast.error("Image upload failed. Please try again");
       }}
       appearance={{
-        button: "ut-ready:bg-primary ut-uploading:bg-primary/50 text-white text-sm font-medium px-4 py-2 rounded-md",
+        button: "ut-ready:bg-primary ut-uploading:bg-primary/50 text-primary-foreground text-sm font-medium px-4 py-2 rounded-md",
         container: "border-2 border-dashed border-muted-foreground/25 rounded-lg p-6 cursor-pointer hover:border-primary/50 transition-colors",
         label: "text-foreground font-medium",
         allowedContent: "text-muted-foreground text-xs",
